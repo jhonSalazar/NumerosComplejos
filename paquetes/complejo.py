@@ -1,5 +1,5 @@
 import math
-
+import cmath 
 
 class Complejo( object ):
 	""" Clase para representar numero complejo """
@@ -35,8 +35,10 @@ class Complejo( object ):
 
 	def formaBinomica( self ):
 		""" Imprime por pantalla representacion del complejo en forma binomica """
-		print( f"( { self.real }, { self.img } )" )
+		return cmath.rect(self.modulo(),self.argumento())
+		#print( f"( { self.real }, { self.img } )" )
 
 	def formaPolar( self ):
 		""" Imprime por pantalla representacion del complejo en forma polar """
-		print( f"[ { self.modulo() }, { self.argumento() } ]" )
+		return cmath.polar(complex(self.real,self.img))
+		#print( f"[ { self.modulo() }, { self.argumento() } ]" )
