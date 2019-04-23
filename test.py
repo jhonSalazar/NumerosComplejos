@@ -15,7 +15,7 @@ class Test(unittest.TestCase):
 
     def test_numero_complejo_polar(self):
         """test unitario para pasar de Binomica a Polar."""
-        numeroComplejo = complejo.Complejo.CrearFormaBinomica(1,2)
+        numeroComplejo = complejo.Complejo.CrearFormaBinomica(0,-200)
         print("Forma Polar: ",end="")
         print(numeroComplejo.formaPolar())
 
