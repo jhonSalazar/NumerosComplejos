@@ -41,4 +41,5 @@ class Complejo( object ):
 	def formaPolar( self ):
 		""" Imprime por pantalla representacion del complejo en forma polar """
 		#return cmath.polar(complex(self.real,self.img))
-		print( f"[ { self.modulo() }, { self.argumento() } ]" )
+		argu = self.AjustarAPrimerGiro( self.argumento() )
+		print( f"[ { self.modulo() }, { argu } ]" )
