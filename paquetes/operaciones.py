@@ -41,3 +41,22 @@ class Operaciones:
         for i in range( exponente ):
             complejos.append( Complejo.CrearFormaPolar( modulo, argumento + math.pi * 2 / exponente * i ) )
         return complejos
+
+    @classmethod
+    def raicesPrimitivas( cls, complejo, exponente ):
+        todasLasRaices = cls.raices( complejo, exponente )
+        indicesDePrimtivas = filter( 
+            lambda i: cls._maximoComunDivisor( i, exponente ) == 1,
+            range( exponente ))
+        raicesFiltradas = map( lambda i: todasLasRaices[ i ], indicesDePrimtivas )
+        return list( raicesFiltradas )
+
+    @classmethod
+    def _maximoComunDivisor( cls, k, n ):
+        a = max( k, n )
+        b = min( k, n )
+        while b != 0:
+            r = a % b
+            a = b
+            b = r
+        return a

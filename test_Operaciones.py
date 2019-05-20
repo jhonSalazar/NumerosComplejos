@@ -95,7 +95,77 @@ class Test(unittest.TestCase):
         print ("C O C I E N T E  --  P O L A R :",end="")
         print(cocientePolar.formaPolar())
 
-       
+        
+    def test_numero_complejo_raices( self ):
+        """ Test Operaciones de raices """
+        complejoEjemplo = complejo.Complejo.CrearFormaBinomica( 4, 3 )
+        unidad = complejo.Complejo.CrearFormaBinomica( 1, 0 )
+
+        complejoAlCubo = operaciones.Operaciones.potencia( complejoEjemplo, 3 )
+        self.assertEqual( -44.0, complejoAlCubo.real )
+        self.assertEqual( 117.0, complejoAlCubo.img  )
+
+        raicesCubicasComplejo = operaciones.Operaciones.raices( complejoEjemplo, 3 )
+        self.assertEqual( 1.6708, round( raicesCubicasComplejo[ 0 ].real, 4 ) )
+        self.assertEqual( 0.3640, round( raicesCubicasComplejo[ 0 ].img, 4 ) )
+
+        self.assertEqual( -1.1506, round( raicesCubicasComplejo[ 1 ].real, 4 ) )
+        self.assertEqual( 1.2650 , round( raicesCubicasComplejo[ 1 ].img, 4 ) )
+
+        self.assertEqual( -0.5202, round( raicesCubicasComplejo[ 2 ].real, 4 ) )
+        self.assertEqual( -1.6289, round( raicesCubicasComplejo[ 2 ].img, 4 ) )
+
+        raicesDeLaUnidad = operaciones.Operaciones.raices( unidad, 6 )
+        self.assertEqual( 1.0, round( raicesDeLaUnidad[ 0 ].real, 4 ) )
+        self.assertEqual( 0.0, round( raicesDeLaUnidad[ 0 ].img , 4 ) )
+
+        self.assertEqual( 0.5,    round( raicesDeLaUnidad[ 1 ].real, 4 ) )
+        self.assertEqual( 0.8660, round( raicesDeLaUnidad[ 1 ].img , 4 ) )
+
+        self.assertEqual( -0.5,    round( raicesDeLaUnidad[ 2 ].real, 4 ) )
+        self.assertEqual(  0.8660, round( raicesDeLaUnidad[ 2 ].img , 4 ) )
+
+        self.assertEqual( -1.0, round( raicesDeLaUnidad[ 3 ].real, 4 ) )
+        self.assertEqual(  0.0, round( raicesDeLaUnidad[ 3 ].img , 4 ) )
+
+        self.assertEqual( -0.5,    round( raicesDeLaUnidad[ 4 ].real, 4 ) )
+        self.assertEqual( -0.8660, round( raicesDeLaUnidad[ 4 ].img , 4 ) )
+
+        self.assertEqual( 0.5,     round( raicesDeLaUnidad[ 5 ].real, 4 ) )
+        self.assertEqual( -0.8660, round( raicesDeLaUnidad[ 5 ].img , 4 ) )
+
+        raicesPrimitivas = operaciones.Operaciones.raicesPrimitivas( unidad, 6 )
+        self.assertEqual( len( raicesPrimitivas ), 2 )
+
+        print (" ")
+        print (" --  T E S T - #3 --")
+        print (" -- Resultado de Operaciones de raices --")
+        print (" COMPLEJO INGRESADO ")
+        print (" ")
+
+        print ("FORMA BINOMICA :",end="")
+        complejoEjemplo.formaBinomica()
+        print ("FORMA POLAR :",end="")
+        complejoEjemplo.formaPolar()
+        print (" ")
+
+        print ( " COMPLEJO ELEVADO AL CUBO  --  B I N Ó M I C A :", end="" )
+        complejoAlCubo.formaBinomica()
+        print ( " COMPLEJO ELEVADO AL CUBO  --  P O L A R :", end="" )
+        complejoAlCubo.formaPolar()
+
+        print ( " RAICES CUBICAS DEL COMPLEJO --  POLAR :" )
+        for raiz in raicesCubicasComplejo:
+            raiz.formaPolar()
+
+        print ( " RAICES SEXTAS DE LA UNIDAD --  POLAR :" )
+        for raiz in raicesDeLaUnidad:
+            raiz.formaPolar()
+
+        print ( " RAICES PRIMITIVAS EN SEIS-ESIMA --  POLAR :" )
+        for raiz in raicesPrimitivas:
+            raiz.formaPolar()
+   
        
 if __name__ == "__main__":
     unittest.main()
