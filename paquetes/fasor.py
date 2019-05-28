@@ -24,6 +24,10 @@ class Fasor(object):
 
     def crearParteImaginaria(fasor):
         return fasor.amplitud * math.sin(fasor.anguloInicial)
+    
+    def pasarACoseno(self):
+        self.anguloInicial = self.anguloInicial - math.pi
+        
 
         
         
