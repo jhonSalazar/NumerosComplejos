@@ -1,6 +1,6 @@
 import math
 from paquetes.complejo import Complejo
-
+from paquetes.fasor import Fasor
 class Operaciones:
 
     @classmethod
@@ -60,3 +60,13 @@ class Operaciones:
             a = b
             b = r
         return a
+    
+    @classmethod
+    def sumarfasores(cls,fasor,otroFasor):
+        # se deberia validar desde esta parte que ambos tengan la misma frecuencia, pero esa validacion
+        #lo hacemos desde la interfaz
+        numeroComplejo =  Complejo.CrearFormaBinomica(fasor.crearParteReal(),fasor.crearParteImaginaria())
+        numeroComplejo2 = Complejo.CrearFormaBinomica(otroFasor.crearParteReal(),otroFasor.crearParteImaginaria())
+        sumaBinomica= cls.suma(numeroComplejo,numeroComplejo2)
+        nuevoFasor = Fasor(sumaBinomica.modulo(),fasor.frecuencia,sumaBinomica.argumento())
+        return nuevoFasor

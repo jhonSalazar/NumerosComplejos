@@ -1,7 +1,8 @@
 import unittest 
+import math
 from  paquetes import complejo
 from  paquetes import operaciones
-
+from paquetes import fasor
 class Test(unittest.TestCase):
     """test unitario para numero complejo."""
     def test_numero_complejo_operacionesBinomica(self):
@@ -165,7 +166,15 @@ class Test(unittest.TestCase):
         print ( " RAICES PRIMITIVAS EN SEIS-ESIMA --  POLAR :" )
         for raiz in raicesPrimitivas:
             raiz.formaPolar()
-   
+    
+    def test_operacion_fasores(self):
+       """Test operacion de fasores """
+       fasor1= fasor.Fasor(7,5,math.pi/3)
+       fasor2= fasor.Fasor(5,5,3*math.pi/2)
+       fasorResultado = operaciones.Operaciones.sumarfasores(fasor1,fasor2)
+       print ( " SUMA DE FASORES :" )
+       print(fasorResultado.amplitud, fasorResultado.frecuencia,fasorResultado.anguloInicial)
        
+        
 if __name__ == "__main__":
     unittest.main()
