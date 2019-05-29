@@ -123,7 +123,7 @@ class Test(unittest.TestCase):
         self.assertEqual( 0.8660, round( raicesDeLaUnidad[ 1 ].img , 4 ) )
 
         self.assertEqual( -0.5,    round( raicesDeLaUnidad[ 2 ].real, 4 ) )
-        self.assertEqual(  0.8660, round( raicesDeLaUnidad[ 2 ].img , 4 ) )
+        self.assertEqual( 0.8660, round( raicesDeLaUnidad[ 2 ].img , 4 ) )
 
         self.assertEqual( -1.0, round( raicesDeLaUnidad[ 3 ].real, 4 ) )
         self.assertEqual(  0.0, round( raicesDeLaUnidad[ 3 ].img , 4 ) )
@@ -135,7 +135,7 @@ class Test(unittest.TestCase):
         self.assertEqual( -0.8660, round( raicesDeLaUnidad[ 5 ].img , 4 ) )
 
         raicesPrimitivas = operaciones.Operaciones.raicesPrimitivas( unidad, 6 )
-        self.assertEqual( len( raicesPrimitivas ), 2 )
+        self.assertEqual( len( raicesPrimitivas ), 2 ) 
 
         print (" ")
         print (" --  T E S T - #3 --")
