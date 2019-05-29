@@ -167,7 +167,7 @@ class Test(unittest.TestCase):
         for raiz in raicesPrimitivas:
             raiz.formaPolar()
     
-    def operacion_fasores(self):
+    def test_operacion_fasores(self):
        """Test operacion de fasores """
        fasor1= fasor.Fasor(7,5,math.pi/3)
        fasor2= fasor.Fasor(5,5,3*math.pi/2)
