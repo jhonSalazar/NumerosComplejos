@@ -20,13 +20,19 @@ class Fasor(object):
         return (self.frecuencia == frecuencia2)
 
     def crearParteReal(fasor):
-        return fasor.amplitud * math.cos(fasor.anguloInicial) #recibe en radianes, multiplicamos directamente
+        return fasor.amplitud * math.cos(fasor.anguloInicial)
+        #recibe en radianes, multiplicamos directamente
 
     def crearParteImaginaria(fasor):
         return fasor.amplitud * math.sin(fasor.anguloInicial)
     
     def pasarACoseno(self):
-        self.anguloInicial = self.anguloInicial - math.pi
+        self.anguloInicial = self.anguloInicial + (math.pi/2)
+
+    def pasarASeno(self):
+        self.anguloInicial = self.anguloInicial - (math.pi/2)
+
+    
         
 
         

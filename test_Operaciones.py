@@ -166,13 +166,23 @@ class Test(unittest.TestCase):
         print ( " RAICES PRIMITIVAS EN SEIS-ESIMA --  POLAR :" )
         for raiz in raicesPrimitivas:
             raiz.formaPolar()
-    
+
+
     def test_operacion_fasores(self):
        """Test operacion de fasores """
-       fasor1= fasor.Fasor(7,5,math.pi/3)
-       fasor2= fasor.Fasor(5,5,3*math.pi/2)
+       fasor1= fasor.Fasor(2,5,math.pi/6)
+       fasor2= fasor.Fasor(2,5,math.pi/3)
        fasorResultado = operaciones.Operaciones.sumarfasores(fasor1,fasor2)
-       print ( " SUMA DE FASORES :" )
+       print ( " " )
+       print ( " -- FASORES -- " )
+       print ( " SUMA DE FASORES : AMBOS EXPRESADOS EN COSENO" )
+       print ( " " )
+       print ( " FASOR 1:" )
+       print(fasor1.amplitud, fasor1.frecuencia,fasor1.anguloInicial)
+       print ( " FASOR 2:" )
+       print(fasor2.amplitud, fasor2.frecuencia,fasor2.anguloInicial)
+       print ( "----------------------" )
+       print ( " FASOR RESULTADO :" )
        print(fasorResultado.amplitud, fasorResultado.frecuencia,fasorResultado.anguloInicial)
        
         

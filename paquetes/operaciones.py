@@ -70,3 +70,6 @@ class Operaciones:
         sumaBinomica= cls.suma(numeroComplejo,numeroComplejo2)
         nuevoFasor = Fasor(sumaBinomica.modulo(),fasor.frecuencia,sumaBinomica.argumento())
         return nuevoFasor
+
+
+    
