@@ -21,7 +21,15 @@ class Consola (object):
         
     def entrada_operacion_basica(self,operacion):
         return {
-                '1':self.ingresar_2_complejos(),#Suma
+                '1':self.ingresar_2_complejos(operacion),#Suma
+                '2':2,#Resta
+                '3':3,#Multiplicacion
+                '4':4#Division
+                }.get(operacion,'Elegir operacion basica correcta')
+   
+    def realizar_operacion(self,operacion,complejo1,complejo2):
+        return {
+                '1':self.sumar_complejos(operacion,complejo1,complejo2),#Suma
                 '2':2,#Resta
                 '3':3,#Multiplicacion
                 '4':4#Division
@@ -56,7 +64,7 @@ class Consola (object):
         #Validar el nivel de operacion exacto
         return input_operacion_avanzada
     
-    def ingresar_2_complejos(self):
+    def ingresar_2_complejos(self,operacion):
         print('\n\n')
         print('Ingresar 2 complejos\nDebe respetar el formato adecuado, elegir\n1. Binomica\n2. Polar')
         print('Para el formato Binomica debe escribir: (a,b)\nDonde a(Real) y b(imaginaria) representa el numero complejo')
@@ -69,6 +77,7 @@ class Consola (object):
            input_complejo1 = input('Ingresar el primer complejo o escriba r para regresar a las operaciones\n ')
            
            if input_complejo1 == 'r':
+               formato = True
                break
                
            if input_complejo1[0] == '(':
@@ -77,20 +86,37 @@ class Consola (object):
                formato_valido_c1 = self.controlador.validar_entrada_polar(input_complejo1)
            
            input_complejo2 = input('Ingresar el segundo complejo o precione la tecla r para regresar a las operaciones\n')
-
-           if input_complejo2[0] == '(':
-              formato_valido_c2 = self.controlador.validar_entrada_bin(input_complejo2)
-           else:
-                formato_valido_c2 = self.controlador.validar_entrada_polar(input_complejo2)
-               
+           
            if input_complejo2 == 'r':
+               formato = True
                break
+           
+           if input_complejo2[0] == '(':
+               formato_valido_c2 = self.controlador.validar_entrada_bin(input_complejo2)
+           else:
+               formato_valido_c2 = self.controlador.validar_entrada_polar(input_complejo2)
+               
+           
 
            if formato_valido_c1 == False and  formato_valido_c2 == False: # salida del usuario para regresar
+              formato = False
               break
             
-           print('Escriba nuevamente el formato correcto o presione la tecla  r para salir')
-          
-        nuevo_complejo = self.controlador.sumar_binomicos(input_complejo1,input_complejo2)   
-        print('real,imaginaria',nuevo_complejo.real,nuevo_complejo.img)
-     
+           print('Escriba nuevamente el formato correcto o presione la tecla  r para salir\n')
+        
+        if formato == False: #ingreamos la operacion elegida
+            if operacion == '1':
+               self.sumar_complejos(input_complejo1,input_complejo2)
+            if  operacion == '2':
+                print('Resta')
+            if  operacion == '3':
+               print('Mulplicacion')
+            if  operacion == '4':
+               print('Division')
+    
+    def sumar_complejos(self,complejo1,complejo2):
+         """Suma 2 complejos"""
+         nuevo_complejo =  self.controlador.sumar_binomicos(complejo1,complejo2)
+         print('real,imaginaria',nuevo_complejo.real,nuevo_complejo.img)
+             
+         
