@@ -53,12 +53,12 @@ class Controlador(object):
         return Operaciones.suma(binomico_complejo1,binomico_complejo2)       
      
     def crear_complejo_binomico(self,real,imaginaria):
-        c_real = int(real)
-        c_imaginaria = int(imaginaria)
+        c_real = float(real)
+        c_imaginaria = float(imaginaria)
         return Complejo.CrearFormaBinomica(c_real,c_imaginaria)
     def crear_compejo_polar(self,modulo,angulo):
-        c_modulo = int(modulo)
-        c_angulo = int(angulo)
+        c_modulo = float(modulo)
+        c_angulo = float(angulo)
         return Complejo.CrearFormaPolar(c_modulo,c_angulo)
     
     def armar_formato_polar(self,forma_polar):
@@ -94,7 +94,7 @@ class Controlador(object):
     def validar_numericos(self,valor):
         """Validar que sean numeros"""
         try:
-           valor_numerico = int(valor)
+           float(valor)
            return False; # falso para cortar el while true anterior, es decir se ingreso el valor correcto
         except ValueError:
            print('Ingrese valores numericos por favor')
