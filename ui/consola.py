@@ -46,7 +46,7 @@ class Consola (object):
         
     def elegir_operacion_basica(self):
         """Elegir el tipo de operacion, suma, resta, multiplicacion"""
-        input_operacion = input('Elegir operacion 1. Suma 2.Resta 3. Multiplicacion 4. Division')
+        input_operacion = input('\nElegir operacion\n1. Suma\n2. Resta\n3. Multiplicacion\n4. Division\n')
         self.entrada_operacion_basica(input_operacion)
         #validar de elegir el correcto numero de operacion basico
        # return input_operacion
@@ -60,13 +60,13 @@ class Consola (object):
     
     def elegir_operacion_avanzada(self):
         """Elegir el tipo de operacion avanzada, potencia, radiacion"""
-        input_operacion_avanzada = input('Elegir operacion 1. Potencia 2.Radicacion')
+        input_operacion_avanzada = input('Elegir operacion 1. Potencia 2.Radicacion\n')
         #Validar el nivel de operacion exacto
         return input_operacion_avanzada
     
     def ingresar_2_complejos(self,operacion):
         print('\n\n')
-        print('Ingresar 2 complejos\nDebe respetar el formato adecuado, elegir\n1. Binomica\n2. Polar')
+        print('Ingresar 2 complejos\nDebe respetar el formato adecuado,  Binomica y Polar\n')
         print('Para el formato Binomica debe escribir: (a,b)\nDonde a(Real) y b(imaginaria) representa el numero complejo')
         print('Para el formato Polar debe escribir: [a,b]\nDonde a(modulo) y b(angulo) representan el numero complejo')
         #validar el complejo 2
@@ -105,18 +105,12 @@ class Consola (object):
            print('Escriba nuevamente el formato correcto o presione la tecla  r para salir\n')
         
         if formato == False: #ingreamos la operacion elegida
-            if operacion == '1':
-               self.sumar_complejos(input_complejo1,input_complejo2)
-            if  operacion == '2':
-                print('Resta')
-            if  operacion == '3':
-               print('Mulplicacion')
-            if  operacion == '4':
-               print('Division')
+               self.aplicar_operacion_basicas(operacion,input_complejo1,input_complejo2)
+
     
-    def sumar_complejos(self,complejo1,complejo2):
+    def aplicar_operacion_basicas(self,operacion,complejo1,complejo2):
          """Suma 2 complejos"""
-         nuevo_complejo =  self.controlador.sumar_binomicos(complejo1,complejo2)
-         print('real,imaginaria',nuevo_complejo.real,nuevo_complejo.img)
+         nuevo_complejo =  self.controlador.sumar_binomicos(operacion,complejo1,complejo2)
+         print('Resultado real,imaginaria',nuevo_complejo.real,nuevo_complejo.img)
              
          

@@ -43,3 +43,4 @@ class Complejo( object ):
 		#return cmath.polar(complex(self.real,self.img))
 		argu = self.AjustarAPrimerGiro( self.argumento() )
 		print( f"[ { self.modulo() }, { argu } ]" )
+        
