@@ -141,7 +141,7 @@ class Consola (object):
            
            input_complejo2 = input('Ingresar el segundo complejo o precione la tecla r para regresar a las operaciones\n')
            
-           print('el formato 2 es ',input_complejo2)
+           
            if input_complejo2 == 'r':
                formato = True
                break
@@ -164,22 +164,23 @@ class Consola (object):
     def aplicar_operacion_basicas(self,operacion,complejo1,complejo2):
         """Se ejecutan las operaciones basicas """
         nuevo_complejo =  self.controlador.ejecutar_operacion_basica(operacion,complejo1,complejo2)
-        print('Resultado real,imaginaria',nuevo_complejo.real,nuevo_complejo.img)
+        print('Resultado\n')
+        nuevo_complejo.formaBinomica()
    
     def aplicar_operacion_avanzadas(self,operacion,complejo1,exponente):
         """Se ejecutan las operaciones avanzadas """
         exponente_int = int(exponente)
         nuevo_complejo =  self.controlador.ejecutar_operacion_avanzada(operacion,complejo1,exponente_int)
         
-        print('Resultados ')
-        if operacion == '1':
-                print(nuevo_complejo.real)
-        elif operacion == '2':
+        print('Resultados\n')
+        if operacion == '1':# si es potencia
+                nuevo_complejo.formaBinomica()
+        elif operacion == '2': # si es Raiz
             for complejo in nuevo_complejo:
-                print(complejo.real)
-        elif operacion == '3':
+                complejo.formaBinomica()
+        elif operacion == '3':# si es raices primitivas
              for complejo in nuevo_complejo:
-                print(complejo.real)
+                complejo.formaBinomica()
        
        
              
