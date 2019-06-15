@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import math
 from paquetes.complejo import Complejo
 from paquetes.fasor import Fasor
 from paquetes.operaciones import Operaciones
@@ -48,7 +49,22 @@ class Controlador(object):
                  binomico_complejo2 = self.crear_compejo_polar(binomico1_c2[0],binomico1_c2[1])
         self.binomico_complejo1 = binomico_complejo1
         self.binomico_complejo2 = binomico_complejo2
+    
+    
+    def convertir_fasor(self,fasor,input_tipo_funcion):
+         fasor_nuevo = self.armar_formato_binomica(fasor)
+         if input_tipo_funcion == '1': # si es seno
+            fasor_seno = Fasor(float(fasor_nuevo[0]),float(fasor_nuevo[1]),float(fasor_nuevo[2]))
+            fasor_seno.pasarACoseno()# pasamos a coseno el angulo inicial
+            return fasor_seno
+         else: # ya viene creada para coseno
+            return Fasor(float(fasor_nuevo[0]),float(fasor_nuevo[1]),float(fasor_nuevo[2]))
+     
+    def ejecutar_operacion_fasores(self,fasor1,faso2):
+        """se realiza la suma de fasores"""
+        return Operaciones.sumarfasores(fasor1,faso2)
         
+    
     def ejecutar_operacion_avanzada(self,operacion,complejo,exponente):
         es_binomico = self.validar_entrada_bin(complejo)
         if not es_binomico: # si el primer compleo viene en forma binomica ingresamos
@@ -97,7 +113,20 @@ class Controlador(object):
         forma_binomica = forma_binomica.split(',')
         return forma_binomica
         
-  #  def crear_complejo_polar(self,modulo,angulo):
+    def validar_entrada_fasor(self, forma_fasor):
+        """validar formato del fasor (a,b,c) y que sean valores numericos"""
+        if forma_fasor[0] == '(' and forma_fasor[len(forma_fasor)-1] == ')':
+            forma_fasor = self.armar_formato_binomica(forma_fasor)
+            try:
+                if len(forma_fasor) > 2:
+                       forma_fasor[2]
+            except IndexError:
+              return True
+          
+            for fasor in forma_fasor:
+               if not self.validar_numericos(fasor):
+                   return False
+        
     def validar_entrada_bin(self,forma_binomica):
         """Validar el formato de binomica y validar que sean numericos"""
         # este caso es para ra evitar un solo numero ingresado en el formato
@@ -148,4 +177,8 @@ class Controlador(object):
            print('Ingrese valores enteros unicamente')
            return True   
         
-    
+    def validar_igualdad_frecuencias(self,frecuencia1,frecuencia2):
+        fasor_1 = self.armar_formato_binomica(frecuencia1)
+        fasor2 = self.armar_formato_binomica(frecuencia2)
+        return (fasor_1[1] == fasor2[1])
+        
