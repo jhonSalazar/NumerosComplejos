@@ -106,7 +106,7 @@ class Controlador(object):
         if forma_binomica[0] == '(' and forma_binomica[len(forma_binomica)-1] == ')':
             forma_binomica = self.armar_formato_binomica(forma_binomica)
             try:
-               forma_binomica[2]
+               forma_binomica[1]
             except IndexError:
               return True
             if not self.validar_numericos(forma_binomica[0]) and not self.validar_numericos(forma_binomica[1]):
@@ -120,7 +120,7 @@ class Controlador(object):
         if forma_polar[0] == '[' and forma_polar[len(forma_polar)-1] == ']':
            forma_polar = self.armar_formato_polar(forma_polar)
            try:
-             forma_polar[2]
+             forma_polar[1]
            except IndexError:
              return True
            if not self.validar_numericos(forma_polar[0]) and not self.validar_numericos(forma_polar[1]):
