@@ -46,9 +46,9 @@ class Consola (object):
             input_complejo =  self.elegir_nivel_operacion()
             
             if input_complejo == '1':
-                self.elegir_operacion_avanzada()
-            elif input_complejo == '2':
                 self.elegir_operacion_basica()
+            elif input_complejo == '2':
+                self.elegir_operacion_avanzada()
             elif input_complejo == '3':
                 self.elegir_operacion_basica()
             else:
@@ -80,7 +80,7 @@ class Consola (object):
         
     def elegir_nivel_operacion(self):
         """Elegir nivel basico o avanzado"""
-        input_nivel_operacion = input('1. Avanzado\n2. Basico\n3. Suma de fasores\n')
+        input_nivel_operacion = input('1. Basico\n2. Avanzado\n3. Suma de fasores\n')
         #Validar el nivel de operacion exacto
         return input_nivel_operacion
     def ingresar_1_complejo(self,operacion):
