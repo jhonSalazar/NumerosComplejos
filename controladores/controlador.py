@@ -100,16 +100,29 @@ class Controlador(object):
   #  def crear_complejo_polar(self,modulo,angulo):
     def validar_entrada_bin(self,forma_binomica):
         """Validar el formato de binomica y validar que sean numericos"""
+        # este caso es para ra evitar un solo numero ingresado en el formato
+        
+       
         if forma_binomica[0] == '(' and forma_binomica[len(forma_binomica)-1] == ')':
             forma_binomica = self.armar_formato_binomica(forma_binomica)
+            try:
+               forma_binomica[2]
+            except IndexError:
+              return True
             if not self.validar_numericos(forma_binomica[0]) and not self.validar_numericos(forma_binomica[1]):
                 return False
         return True
             
     def validar_entrada_polar(self,forma_polar):
         """Validar el formato de polar y validar que sean numericos"""
+       
+        
         if forma_polar[0] == '[' and forma_polar[len(forma_polar)-1] == ']':
            forma_polar = self.armar_formato_polar(forma_polar)
+           try:
+             forma_polar[2]
+           except IndexError:
+             return True
            if not self.validar_numericos(forma_polar[0]) and not self.validar_numericos(forma_polar[1]):
                 return False
         return True

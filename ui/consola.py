@@ -85,18 +85,18 @@ class Consola (object):
         return input_nivel_operacion
     def ingresar_1_complejo(self,operacion):
         print('\n\n')
-        print('Ingrese un numero complejo\nDebe respetar el formato adecuado,  Binomica y Polar\n')
-        print('Para el formato Binomica debe escribir: (a,b)\nDonde a(Real) y b(imaginaria) representa el numero complejo')
-        print('Para el formato Polar debe escribir: [a,b]\nDonde a(modulo) y b(angulo) representan el numero complejo')
+        print('Ingrese un numero complejo\nDebe respetar el formato adecuado, Binomica y Polar\n')
+        print('Para el formato Binomica debe escribir: (a,b)\nDonde a(Real) y b(imaginaria) representa el numero complejo\n')
+        print('Para el formato Polar debe escribir: [a,b]\nDonde a(modulo) y b(angulo) representan el numero complejo\n')
         #validar el complejo 2
         #Luego trasnformar segun el caso
         formato = True
         while formato:
            
-           input_complejo1 = input('Ingresar el numero complejo o escriba r para regresar a las operaciones\n')
+           input_complejo1 = input('Ingrese el numero complejo  o escriba r para regresar a las operaciones\n')
            
            if input_complejo1 == 'r':
-               formato = True
+               return True
                break
                
            if input_complejo1[0] == '(':
@@ -104,7 +104,10 @@ class Consola (object):
            else:
               formato_valido_c1 = self.controlador.validar_entrada_polar(input_complejo1)
            
-           input_exonente = input('Ingrese el exponente\n') 
+           input_exonente = input('Ingrese el exponente o escriba r para regresar a las operaciones\n') 
+           if input_exonente == 'r':
+               return True
+               break
            
            if not self.controlador.validar_numericos_enteros(input_exonente):
                   formato_valido_exp = False
@@ -120,9 +123,9 @@ class Consola (object):
            
     def ingresar_2_complejos(self,operacion):
         print('\n\n')
-        print('Ingresar 2 complejos\nDebe respetar el formato adecuado,  Binomica y Polar\n')
-        print('Para el formato Binomica debe escribir: (a,b)\nDonde a(Real) y b(imaginaria) representa el numero complejo')
-        print('Para el formato Polar debe escribir: [a,b]\nDonde a(modulo) y b(angulo) representan el numero complejo')
+        print('Ingresar 2 complejos\nDebe respetar el formato adecuado, Binomica y Polar\n')
+        print('Para el formato Binomica debe escribir: (a,b)\nDonde a(Real) y b(imaginaria) representa el numero complejo\n')
+        print('Para el formato Polar debe escribir: [a,b]\nDonde a(modulo) y b(angulo) representan el numero complejo\n')
         #validar el complejo 2
         #Luego trasnformar segun el caso
         formato = True
@@ -131,7 +134,7 @@ class Consola (object):
            input_complejo1 = input('Ingresar el primer complejo o escriba r para regresar a las operaciones\n ')
            
            if input_complejo1 == 'r':
-               formato = True
+               return True
                break
                
            if input_complejo1[0] == '(':
@@ -143,7 +146,7 @@ class Consola (object):
            
            
            if input_complejo2 == 'r':
-               formato = True
+               return True
                break
            
            if input_complejo2[0] == '(':
@@ -165,22 +168,33 @@ class Consola (object):
         """Se ejecutan las operaciones basicas """
         nuevo_complejo =  self.controlador.ejecutar_operacion_basica(operacion,complejo1,complejo2)
         print('Resultado\n')
-        nuevo_complejo.formaBinomica()
+        print(nuevo_complejo.formaBinomica(),'--> Forma Binomica')
+        print(nuevo_complejo.formaPolar(),'--> Forma Polar')
    
     def aplicar_operacion_avanzadas(self,operacion,complejo1,exponente):
         """Se ejecutan las operaciones avanzadas """
         exponente_int = int(exponente)
         nuevo_complejo =  self.controlador.ejecutar_operacion_avanzada(operacion,complejo1,exponente_int)
-        
+        raices = 0
         print('Resultados\n')
         if operacion == '1':# si es potencia
                 nuevo_complejo.formaBinomica()
+                nuevo_complejo.formaPolar()
+                print('\n')
         elif operacion == '2': # si es Raiz
             for complejo in nuevo_complejo:
+                print('Raiz:',raices) 
                 complejo.formaBinomica()
+                complejo.formaPolar()
+                print('\n')
+                raices = raices + 1
         elif operacion == '3':# si es raices primitivas
              for complejo in nuevo_complejo:
-                complejo.formaBinomica()
+                 print('Raiz:',raices)
+                 complejo.formaBinomica()
+                 complejo.formaPolar()
+                 print('\n')
+                 raices = raices + 1
        
        
              
