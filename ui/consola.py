@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
+import sys
 from controladores.controlador import Controlador
 """
 Created on Wed Jun 12 21:44:37 2019
@@ -51,6 +53,9 @@ class Consola (object):
                 self.elegir_operacion_avanzada()
             elif input_complejo == '3':
                 self.entrada_operacion_fasores()
+            elif input_complejo == 'x' or input_complejo == 'X':
+                 print('Programa finalizado')
+                 sys.exit()
             else:
                print('Elegir el Nivel de operacion correcta\n')
                 
@@ -153,7 +158,7 @@ class Consola (object):
         
     def elegir_nivel_operacion(self):
         """Elegir nivel basico o avanzado"""
-        input_nivel_operacion = input('1. Basico\n2. Avanzado\n3. Suma de fasores\n')
+        input_nivel_operacion = input('1. Basico\n2. Avanzado\n3. Suma de fasores\n4. presiona la tecla x para salir del programa\n')
         #Validar el nivel de operacion exacto
         return input_nivel_operacion
     def ingresar_1_complejo(self,operacion):
